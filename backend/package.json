@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "The backend module for my portfolio website project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicballesteros/portfolio.git"
+  },
+  "author": "Nic Ballesteros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicballesteros/portfolio/issues"
+  },
+  "homepage": "https://github.com/nicballesteros/portfolio#readme"
+}
