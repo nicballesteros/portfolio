@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+    db:
+        image: postgres
+        restart: always
+        env_file: 
+            - ./db/db.env
+        volumes: 
+            - ./db:/var/lib/postgresql/data/
+
+    # backend:
+    # frontend:
