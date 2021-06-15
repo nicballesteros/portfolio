@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/nicballesteros/portfolio/issues"
   },
-  "homepage": "https://github.com/nicballesteros/portfolio#readme"
+  "homepage": "https://github.com/nicballesteros/portfolio#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.6.0"
+  }
 }

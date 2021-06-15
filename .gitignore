@@ -1,3 +1,5 @@
-./db/*
-./backend/node_modules/*
-./portfolio/node_modules/*
+db/*
+backend/node_modules/*
+portfolio/node_modules/*
+
+
