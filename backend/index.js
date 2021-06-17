@@ -2,28 +2,49 @@
 //Created 6/13/21
 
 const express = require('express');
-const passport = require('passport');
 
+//General Middleware
+const cors = require('cors');
+
+//Authentication Middleware
+const passport = require('passport');
+const passportLocal = require('passport-local');
+
+const expressSession = require('express-session');
+
+//Database API
 const { Pool, Client } = require('pg');
 
-const pool = new Pool();
+//Database Session Store
+const pgSession = require('connect-pg-simple')(session);
 
-let query = new Promise((reject, resolve) => {
-    pool.query('query', (err, res) => {
-        if (err) {
-            reject(err);
-            return;
-        }
+//Set the script in debug mode
+const debugMode = process.env.NODE_ENV === "debug";
 
-        resolve(res);
-    });
-});
+const pgPool = new Pool();
 
-query.then((res) => {
-    console.log(res);
-}).catch((err) => {
-    console.error(err);
-});
+// let pgPool = new Pool({
+//     //Pool Options
+// });
+
+
+
+// let query = new Promise((reject, resolve) => {
+//     pool.query('query', (err, res) => {
+//         if (err) {
+//             reject(err);
+//             return;
+//         }
+
+//         resolve(res);
+//     });
+// });
+
+// query.then((res) => {
+//     console.log(res);
+// }).catch((err) => {
+//     console.error(err);
+// });
 
 //Create a new express app.
 const app = express();
@@ -36,6 +57,22 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded());
+
+app.use(expressSession({
+    secret: 'some secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24, //1 day
+    },
+    store: new pgSession({
+        pool: pgPool,
+        tableName: 'user_sessions',
+    }),
+}));
+
+//Use passport middleware to authenticate users.
+app.use(passport);
 
 
 /**

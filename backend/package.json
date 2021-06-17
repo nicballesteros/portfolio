@@ -4,7 +4,9 @@
   "description": "The backend module for my portfolio website project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node index.js",
+    "debug": "NODE_ENV=debug nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,15 @@
   },
   "homepage": "https://github.com/nicballesteros/portfolio#readme",
   "dependencies": {
+    "connect-pg-simple": "^6.2.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-flash": "0.0.2",
     "express-session": "^1.17.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
