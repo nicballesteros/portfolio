@@ -3,3 +3,5 @@ backend/node_modules/*
 portfolio/node_modules/*
 db.env
 
+db/db.env
+pg-data/*
